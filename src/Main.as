@@ -7,6 +7,7 @@ package
 		public function Main():void 
 		{
 			super(320, 240, GameState, 2);
+			
 		}
 		
 	}
