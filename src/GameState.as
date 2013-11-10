@@ -7,7 +7,6 @@ package
 		[Embed(source = "../res/map.csv", mimeType = "application/octet-stream")] 
 		public var M_MAP:Class;
 		
-		
 		[Embed(source = "../res/tileset.png")] 			
 		private const G_TILES:Class;
 		
@@ -36,6 +35,8 @@ package
 			{
 				//time to change the player
 				player.changeState();
+				//add some fun "poof" effects:
+				add(new PoofCloud(player.centerX, player.centerY));
 			}
 		}
 	}

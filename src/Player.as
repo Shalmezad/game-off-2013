@@ -37,6 +37,8 @@ package
 				y -= 10;
 			}
 			loadGraphic(nextClass, false, true);
+			//HACK: Fixes the facing issue if facing = left and do loadGraphic().
+			dirty = true;
 		}
 		
 		override public function update():void
@@ -57,6 +59,16 @@ package
 			{
 				velocity.y = -200;
 			}
+		}
+		
+		
+		public function get centerX():int
+		{
+			return x + width/2;
+		}
+		public function get centerY():int
+		{
+			return y + height/2;
 		}
 	}
 
