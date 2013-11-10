@@ -12,6 +12,7 @@ package
 		
 		private var player:Player;
 		private var world:FlxTilemap;
+		private var changeCloud:PoofCloud;
 		
 		public function GameState() 
 		{
@@ -21,6 +22,9 @@ package
 			
 			player = new Player();
 			add(player);
+			
+			changeCloud = new PoofCloud();
+			add(changeCloud);
 		}
 		
 		
@@ -36,7 +40,10 @@ package
 				//time to change the player
 				player.changeState();
 				//add some fun "poof" effects:
-				add(new PoofCloud(player.centerX, player.centerY));
+				//add(new PoofCloud(player.centerX, player.centerY));
+				changeCloud.x = player.centerX;
+				changeCloud.y = player.centerY;
+				changeCloud.start(true, .5, .1);
 			}
 		}
 	}
