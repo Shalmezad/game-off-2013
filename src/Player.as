@@ -23,6 +23,10 @@ package
 		
 		public function changeState():void
 		{
+			//get the current centerX
+			var cX:int = centerX;
+			//and our current bottom.
+			var btm:int = bottom;
 			var nextClass:Class = null;
 			currentState++;
 			if (currentState > STATE_TURTLE) {
@@ -34,11 +38,17 @@ package
 			}
 			else if (currentState == STATE_TURTLE) {
 				nextClass = G_PLAYER_TURTLE;
-				y -= 10;
 			}
 			loadGraphic(nextClass, false, true);
 			//HACK: Fixes the facing issue if facing = left and do loadGraphic().
 			dirty = true;
+			
+			//move our center x to match the old center x.
+			var dX:int = cX - centerX;
+			x += dX;
+			//and our bottom to match the old bottom
+			var dY:int = btm - bottom;
+			y += dY;
 		}
 		
 		override public function update():void
@@ -69,6 +79,10 @@ package
 		public function get centerY():int
 		{
 			return y + height/2;
+		}
+		public function get bottom():int
+		{
+			return y + height;
 		}
 	}
 
