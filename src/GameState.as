@@ -10,6 +10,9 @@ package
 		[Embed(source = "../res/tileset.png")] 			
 		private const G_TILES:Class;
 		
+		[Embed(source = "../res/tileset2.png")] 			
+		private const G_TILES_2:Class;
+		
 		private var player:Player;
 		private var world:FlxTilemap;
 		private var changeCloud:PoofCloud;
@@ -17,7 +20,8 @@ package
 		public function GameState() 
 		{
 			world = new FlxTilemap();
-			world.loadMap(new M_MAP, G_TILES, 20, 20);
+			//world.loadMap(new M_MAP, G_TILES, 20, 20);
+			world.loadMap(new M_MAP, G_TILES_2, 20, 20, FlxTilemap.AUTO);
 			add(world);
 			
 			player = new Player();
@@ -25,6 +29,10 @@ package
 			
 			changeCloud = new PoofCloud();
 			add(changeCloud);
+			
+			var branding:FlxText;
+			branding = new FlxText(320 - 100, 5, 100, "Shalmezad");
+			add(branding);
 		}
 		
 		
@@ -40,7 +48,6 @@ package
 				//time to change the player
 				player.changeState();
 				//add some fun "poof" effects:
-				//add(new PoofCloud(player.centerX, player.centerY));
 				changeCloud.x = player.centerX;
 				changeCloud.y = player.centerY;
 				changeCloud.start(true, .5, .1);
