@@ -18,18 +18,18 @@ package
 		override public function update():void
 		{
 			super.update();
-			if (FlxG.keys.LEFT) 
+			if (Key.LEFT && !Key.RIGHT) 
 			{
 				x--;
 				facing = FlxObject.LEFT;
 			}
-			else if (FlxG.keys.RIGHT) 
+			else if (Key.RIGHT && !Key.LEFT) 
 			{
 				x++;
 				facing = FlxObject.RIGHT;
 			}
 			
-			if (FlxG.keys.SPACE && isTouching(FLOOR)) 
+			if (Key.JUMP && isTouching(FLOOR)) 
 			{
 				velocity.y = -200;
 			}
