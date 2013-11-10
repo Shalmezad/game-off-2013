@@ -32,6 +32,11 @@ package
 			if (!player.onScreen()) {
 				FlxG.switchState(new GameState());
 			}
+			if (Key.JUST_RELEASED_CHANGE)
+			{
+				//time to change the player
+				player.changeState();
+			}
 		}
 	}
 

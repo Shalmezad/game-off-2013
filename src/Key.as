@@ -22,6 +22,11 @@ package
 		{
 			return FlxG.keys.SPACE;
 		}
+		
+		public static function get JUST_RELEASED_CHANGE():Boolean
+		{
+			return FlxG.keys.justReleased("SPACE");
+		}
 	}
 
 }
