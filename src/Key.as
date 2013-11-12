@@ -13,20 +13,15 @@ package
 			return FlxG.keys.RIGHT || FlxG.keys.D;
 		}
 		
-		public static function get JUMP():Boolean
+		public static function get UP():Boolean
 		{
 			return FlxG.keys.UP || FlxG.keys.W;
 		}
-		
-		public static function get CHANGE():Boolean
+		public static function get DOWN():Boolean
 		{
-			return FlxG.keys.SPACE;
+			return FlxG.keys.DOWN || FlxG.keys.S;
 		}
 		
-		public static function get JUST_RELEASED_CHANGE():Boolean
-		{
-			return FlxG.keys.justReleased("SPACE");
-		}
 	}
 
 }
