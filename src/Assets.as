@@ -7,6 +7,9 @@ package
 		[Embed(source = "../res/tileset.png")] 			
 		public static const G_TILES:Class;
 		
+		//ENEMIES!!!
+		[Embed(source = "../res/black-sheep.png")] 			
+		public static const G_BLACK_SHEEP:Class;	//Every family has one. This game has many
 		
 		//Player
 		[Embed(source = "../res/wizard.png")] 			

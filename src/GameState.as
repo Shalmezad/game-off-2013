@@ -4,7 +4,6 @@ package
 	public class GameState extends FlxState
 	{
 		private var floor:Floor;
-		//private var player:Player;
 		private var changeTick:int = 0;
 		private var gui:GUI;
 		private var bullets:BulletGroup;
@@ -14,10 +13,11 @@ package
 			floor = new Floor();
 			add(floor);
 			
-			//player = new Player();
 			Registry.player = new Player();
 			add(Registry.player);
-						
+			
+			add(new Enemy());
+			
 			bullets = new BulletGroup();
 			add(bullets);
 			
