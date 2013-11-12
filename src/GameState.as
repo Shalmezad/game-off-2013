@@ -33,6 +33,7 @@ package
 		{
 			super.update();
 			FlxG.collide(bullets, enemies, enemyBulletCollision);
+			FlxG.overlap(Registry.player, enemies, enemyPlayerCollision);
 			changeTick++;
 			if (changeTick >= 300) 
 			{
@@ -46,6 +47,11 @@ package
 				bullets.addBullet(Registry.player.x, Registry.player.y, Registry.player.angle);
 			}
 			gui.playerHealth = Registry.player.health;
+		}
+		
+		private function enemyPlayerCollision(a:FlxObject, b:FlxObject):void
+		{
+			Registry.player.hurt(1);
 		}
 		
 		private function enemyBulletCollision(a:FlxObject, b:FlxObject) :void
