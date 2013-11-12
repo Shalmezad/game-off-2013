@@ -68,13 +68,14 @@ package
 				acceleration.x = accel;
 			}
 			
-			angle = Math.atan2(FlxG.mouse.y - y, FlxG.mouse.x - x) / Math.PI * 180 + 90;
+			angle = Math.atan2(FlxG.mouse.y - y, FlxG.mouse.x - x) / Math.PI * 180;
 			
 			changeColor+= 5;
 			if (changeColor > 255)
 				changeColor = 255;
 			var intVal:int = changeColor << 16 | changeColor << 8 | changeColor;
 			this.color = intVal;
+			
 		}
 		
 	}

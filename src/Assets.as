@@ -12,6 +12,10 @@ package
 		
 		[Embed(source = "../res/sheep.png")] 			
 		public static const G_SHEEP:Class;
+		
+		
+		[Embed(source = "../res/fireball.png")] 			
+		public static const G_FIREBALL:Class;
 	}
 
 }

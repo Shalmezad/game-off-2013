@@ -39,6 +39,10 @@ package
 				changeTick = 0;
 				player.change();
 			}
+			
+			if (FlxG.mouse.justReleased()) {
+				add(new Bullet(player.x, player.y, player.angle));
+			}
 		}
 		
 		
