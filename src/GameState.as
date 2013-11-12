@@ -6,15 +6,18 @@ package
 		private var player:Player;
 		private var changeTick:int = 0;
 		private var gui:GUI;
+		private var bullets:BulletGroup;
 		
 		public function GameState() 
 		{	
 			var mapString:String = "";
 			var background:FlxTilemap = new FlxTilemap();
-			for (var i:int = 0; i < Main.GAME_HEIGHT / 20; i++) {
+			for (var i:int = 0; i < Main.GAME_HEIGHT / 20; i++) 
+			{
 				if (i != 0)
 					mapString += "\n";
-				for (var j:int = 0; j < Main.GAME_WIDTH; j++) {
+				for (var j:int = 0; j < Main.GAME_WIDTH; j++) 
+				{
 					if (j != 0)
 						mapString += ",";
 					mapString += "0";
@@ -26,6 +29,9 @@ package
 			player = new Player();
 			add(player);
 			
+			bullets = new BulletGroup();
+			add(bullets);
+			
 			gui = new GUI();
 			add(gui);
 		}
@@ -35,13 +41,15 @@ package
 		{
 			super.update();
 			changeTick++;
-			if (changeTick >= 300) {
+			if (changeTick >= 300) 
+			{
 				changeTick = 0;
 				player.change();
 			}
 			
-			if (FlxG.mouse.justReleased()) {
-				add(new Bullet(player.x, player.y, player.angle));
+			if (FlxG.mouse.justReleased()) 
+			{
+				bullets.addBullet(player.x, player.y, player.angle);
 			}
 			gui.playerHealth = player.health;
 		}
@@ -49,5 +57,4 @@ package
 		
 		
 	}
-
 }

@@ -27,10 +27,12 @@ package
 		{
 			changeColor = 0;
 			var changeShape:int = Math.random() * 2;
-			if (changeShape == 1) {
+			if (changeShape == 1) 
+			{
 				toSheep();
 			}
-			else {
+			else 
+			{
 				toWizard();
 			}
 		}
@@ -55,17 +57,21 @@ package
 			super.update();
 			acceleration.x = 0;
 			acceleration.y = 0;
-			if (Key.UP && !Key.DOWN) {
+			if (Key.UP && !Key.DOWN) 
+			{
 				acceleration.y = -1 * accel;
 			}
-			else if (Key.DOWN && !Key.UP) {
+			else if (Key.DOWN && !Key.UP) 
+			{
 				acceleration.y = accel;
 			}
 			
-			if (Key.LEFT && !Key.RIGHT) {
+			if (Key.LEFT && !Key.RIGHT) 
+			{
 				acceleration.x = -1 * accel;
 			}
-			else if (Key.RIGHT && !Key.LEFT) {
+			else if (Key.RIGHT && !Key.LEFT) 
+			{
 				acceleration.x = accel;
 			}
 			
@@ -82,19 +88,23 @@ package
 		
 		private function keepInBounds():void
 		{
-			if (x < 0) {
+			if (x < 0) 
+			{
 				x = 0;
 				velocity.x = Math.max(velocity.x, 0);
 			}
-			else if (x + width > Main.GAME_WIDTH) {
+			else if (x + width > Main.GAME_WIDTH) 
+			{
 				x = Main.GAME_WIDTH - width;
 				velocity.x = Math.min(velocity.x, 0);
 			}
-			if (y < 0) {
+			if (y < 0) 
+			{
 				y = 0;
 				velocity.y = Math.max(velocity.y, 0);
 			}
-			else if (y + height > Main.GAME_HEIGHT) {
+			else if (y + height > Main.GAME_HEIGHT) 
+			{
 				y = Main.GAME_HEIGHT - height;
 				velocity.y = Math.min(velocity.y, 0);
 			}
