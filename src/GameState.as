@@ -4,6 +4,7 @@ package
 	public class GameState extends FlxState
 	{
 		private var player:Player;
+		private var changeTick:int = 0;
 		
 		public function GameState() 
 		{	
@@ -33,7 +34,15 @@ package
 		override public function update():void
 		{
 			super.update();
+			changeTick++;
+			if (changeTick >= 300) {
+				changeTick = 0;
+				player.change();
+			}
 		}
+		
+		
+		
 	}
 
 }

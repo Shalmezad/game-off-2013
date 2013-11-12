@@ -9,6 +9,9 @@ package
 		
 		[Embed(source = "../res/wizard.png")] 			
 		public static const G_WIZARD:Class;
+		
+		[Embed(source = "../res/sheep.png")] 			
+		public static const G_SHEEP:Class;
 	}
 
 }
