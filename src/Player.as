@@ -20,6 +20,7 @@ package
 			accel = WIZARD_ACCEL;
 			drag.x = 100;
 			drag.y = 100;
+			health = 100;
 		}
 		
 		public function change():void
@@ -76,8 +77,28 @@ package
 			var intVal:int = changeColor << 16 | changeColor << 8 | changeColor;
 			this.color = intVal;
 			
+			keepInBounds();
 		}
 		
+		private function keepInBounds():void
+		{
+			if (x < 0) {
+				x = 0;
+				velocity.x = Math.max(velocity.x, 0);
+			}
+			else if (x + width > Main.GAME_WIDTH) {
+				x = Main.GAME_WIDTH - width;
+				velocity.x = Math.min(velocity.x, 0);
+			}
+			if (y < 0) {
+				y = 0;
+				velocity.y = Math.max(velocity.y, 0);
+			}
+			else if (y + height > Main.GAME_HEIGHT) {
+				y = Main.GAME_HEIGHT - height;
+				velocity.y = Math.min(velocity.y, 0);
+			}
+		}
 	}
 
 }

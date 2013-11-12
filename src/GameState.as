@@ -5,6 +5,7 @@ package
 	{
 		private var player:Player;
 		private var changeTick:int = 0;
+		private var gui:GUI;
 		
 		public function GameState() 
 		{	
@@ -25,9 +26,8 @@ package
 			player = new Player();
 			add(player);
 			
-			var branding:FlxText;
-			branding = new FlxText(320 - 100, 5, 100, "Shalmezad");
-			add(branding);
+			gui = new GUI();
+			add(gui);
 		}
 		
 		
@@ -43,6 +43,7 @@ package
 			if (FlxG.mouse.justReleased()) {
 				add(new Bullet(player.x, player.y, player.angle));
 			}
+			gui.playerHealth = player.health;
 		}
 		
 		
