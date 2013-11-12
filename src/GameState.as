@@ -7,6 +7,7 @@ package
 		private var changeTick:int = 0;
 		private var gui:GUI;
 		private var bullets:BulletGroup;
+		private var enemies:FlxGroup;
 		
 		public function GameState() 
 		{	
@@ -16,7 +17,9 @@ package
 			Registry.player = new Player();
 			add(Registry.player);
 			
-			add(new Enemy());
+			enemies = new FlxGroup();
+			enemies.add(new Enemy());
+			add(enemies);
 			
 			bullets = new BulletGroup();
 			add(bullets);
@@ -29,6 +32,7 @@ package
 		override public function update():void
 		{
 			super.update();
+			FlxG.collide(bullets, enemies, enemyBulletCollision);
 			changeTick++;
 			if (changeTick >= 300) 
 			{
@@ -44,7 +48,11 @@ package
 			gui.playerHealth = Registry.player.health;
 		}
 		
-		
+		private function enemyBulletCollision(a:FlxObject, b:FlxObject) :void
+		{
+			a.kill();
+			b.kill();
+		}
 		
 	}
 }
