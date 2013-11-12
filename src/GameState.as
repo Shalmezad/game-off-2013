@@ -4,7 +4,7 @@ package
 	public class GameState extends FlxState
 	{
 		private var floor:Floor;
-		private var player:Player;
+		//private var player:Player;
 		private var changeTick:int = 0;
 		private var gui:GUI;
 		private var bullets:BulletGroup;
@@ -14,9 +14,10 @@ package
 			floor = new Floor();
 			add(floor);
 			
-			player = new Player();
-			add(player);
-			
+			//player = new Player();
+			Registry.player = new Player();
+			add(Registry.player);
+						
 			bullets = new BulletGroup();
 			add(bullets);
 			
@@ -32,15 +33,15 @@ package
 			if (changeTick >= 300) 
 			{
 				changeTick = 0;
-				player.change();
+				Registry.player.change();
 				floor.change();
 			}
 			
 			if (FlxG.mouse.justReleased()) 
 			{
-				bullets.addBullet(player.x, player.y, player.angle);
+				bullets.addBullet(Registry.player.x, Registry.player.y, Registry.player.angle);
 			}
-			gui.playerHealth = player.health;
+			gui.playerHealth = Registry.player.health;
 		}
 		
 		
