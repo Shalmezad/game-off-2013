@@ -28,6 +28,11 @@ package
 		public static const G_FIREBALL:Class;
 		[Embed(source = "../res/blue-fireball.png")] 			
 		public static const G_BLUE_FIREBALL:Class;
+		
+		//misc
+		[Embed(source = "../res/disco_fg.png")] 			
+		public static const G_DISCO:Class;
+		
 	}
 
 }

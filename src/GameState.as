@@ -28,6 +28,8 @@ package
 			Registry.enemyBullets = new BulletGroup();
 			add(Registry.enemyBullets);
 			
+			add(new Disco());
+			
 			gui = new GUI();
 			add(gui);
 		}
