@@ -20,6 +20,8 @@ package
 		//Projectiles
 		[Embed(source = "../res/fireball.png")] 			
 		public static const G_FIREBALL:Class;
+		[Embed(source = "../res/blue-fireball.png")] 			
+		public static const G_BLUE_FIREBALL:Class;
 	}
 
 }

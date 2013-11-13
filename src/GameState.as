@@ -7,6 +7,7 @@ package
 		private var changeTick:int = 0;
 		private var gui:GUI;
 		private var bullets:BulletGroup;
+		private var enemyBullets:BulletGroup;
 		private var enemies:FlxGroup;
 		
 		public function GameState() 
@@ -23,6 +24,8 @@ package
 			
 			bullets = new BulletGroup();
 			add(bullets);
+			enemyBullets = new BulletGroup();
+			add(enemyBullets);
 			
 			gui = new GUI();
 			add(gui);
@@ -34,17 +37,24 @@ package
 			super.update();
 			FlxG.collide(bullets, enemies, enemyBulletCollision);
 			FlxG.overlap(Registry.player, enemies, enemyPlayerCollision);
+			FlxG.overlap(Registry.player, enemyBullets, bulletPlayerCollision);
 			changeTick++;
 			if (changeTick >= 300) 
 			{
 				changeTick = 0;
 				Registry.player.change();
 				floor.change();
+				
+				var enemy:Enemy = enemies.getFirstAlive() as Enemy;
+				if (enemy) 
+				{
+					enemyBullets.addBullet(enemy.x, enemy.y, enemy.angle, Assets.G_FIREBALL);			
+				}
 			}
 			
 			if (FlxG.mouse.justReleased()) 
 			{
-				bullets.addBullet(Registry.player.x, Registry.player.y, Registry.player.angle);
+				bullets.addBullet(Registry.player.x, Registry.player.y, Registry.player.angle, Assets.G_BLUE_FIREBALL);
 			}
 			gui.playerHealth = Registry.player.health;
 		}
@@ -58,6 +68,17 @@ package
 		{
 			a.kill();
 			b.kill();
+		}
+		
+		private function bulletPlayerCollision(a:FlxObject, b:FlxObject):void
+		{
+			var bullet:Bullet;
+			if (a instanceof Bullet)
+				bullet = a as Bullet;
+			else
+				bullet = b as Bullet;
+			bullet.kill();
+			Registry.player.hurt(10);
 		}
 		
 	}
