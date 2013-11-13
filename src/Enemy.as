@@ -6,6 +6,7 @@ package
 		private const SPEED:int = 1;
 		private var moveFunction:Function;
 		private var changeColor:int = 0;
+		private var coolDown:int = 0;
 		
 		public function Enemy() 
 		{
@@ -18,14 +19,25 @@ package
 		override public function update():void
 		{
 			super.update();
-			moveFunction();
-			keepInBounds();
-						
-			changeColor+= 5;
-			if (changeColor > 255)
-				changeColor = 255;
-			var intVal:int = changeColor << 16 | changeColor << 8 | changeColor;
-			this.color = intVal;
+			if (alive)
+			{
+				moveFunction();
+				keepInBounds();
+							
+				changeColor+= 5;
+				if (changeColor > 255)
+					changeColor = 255;
+				var intVal:int = changeColor << 16 | changeColor << 8 | changeColor;
+				this.color = intVal;
+				coolDown--;
+				if (coolDown <= 0) {
+					Registry.enemyBullets.addBullet(	x, 
+														y, 
+														angle, 
+														Assets.G_FIREBALL);
+					coolDown = 30;
+				}
+			}
 		}
 		
 
@@ -33,7 +45,7 @@ package
 		{
 			changeColor = 0;
 			var changeShape:int = Math.random() * 2;
-			if (changeShape == 1) 
+			if (changeShape == 1)
 			{
 				toSheep();
 			}

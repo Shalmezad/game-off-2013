@@ -7,7 +7,6 @@ package
 		private var changeTick:int = 0;
 		private var gui:GUI;
 		private var bullets:BulletGroup;
-		private var enemyBullets:BulletGroup;
 		private var enemies:FlxGroup;
 		private var playerDead:Boolean = false;
 		
@@ -26,8 +25,8 @@ package
 			
 			bullets = new BulletGroup();
 			add(bullets);
-			enemyBullets = new BulletGroup();
-			add(enemyBullets);
+			Registry.enemyBullets = new BulletGroup();
+			add(Registry.enemyBullets);
 			
 			gui = new GUI();
 			add(gui);
@@ -40,7 +39,7 @@ package
 			FlxG.collide(bullets, enemies, enemyBulletCollision);
 			FlxG.collide(enemies, enemies);
 			FlxG.collide(Registry.player, enemies, enemyPlayerCollision);
-			FlxG.overlap(Registry.player, enemyBullets, bulletPlayerCollision);
+			FlxG.overlap(Registry.player, Registry.enemyBullets, bulletPlayerCollision);
 			changeTick++;
 			if (changeTick >= 300) 
 			{
@@ -49,14 +48,19 @@ package
 				floor.change();
 				for each(var enemy:Enemy in enemies.members) 
 				{
-					enemy.change();
-					enemyBullets.addBullet(enemy.x, enemy.y, enemy.angle, Assets.G_FIREBALL);
+					if (enemy.alive)
+					{
+						enemy.change();
+					}
 				}
 			}
 			
 			if (FlxG.mouse.justReleased()) 
 			{
-				bullets.addBullet(Registry.player.x, Registry.player.y, Registry.player.angle, Assets.G_BLUE_FIREBALL);
+				bullets.addBullet(	Registry.player.x, 
+									Registry.player.y, 
+									Registry.player.angle, 
+									Assets.G_BLUE_FIREBALL);
 			}
 			gui.playerHealth = Registry.player.health;
 			if (Registry.player.health <= 0 && !playerDead) 
