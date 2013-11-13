@@ -44,11 +44,10 @@ package
 				changeTick = 0;
 				Registry.player.change();
 				floor.change();
-				
-				var enemy:Enemy = enemies.getFirstAlive() as Enemy;
-				if (enemy) 
+				for each(var enemy:Enemy in enemies.members) 
 				{
-					enemyBullets.addBullet(enemy.x, enemy.y, enemy.angle, Assets.G_FIREBALL);			
+					enemy.change();
+					enemyBullets.addBullet(enemy.x, enemy.y, enemy.angle, Assets.G_FIREBALL);
 				}
 			}
 			
@@ -73,7 +72,7 @@ package
 		private function bulletPlayerCollision(a:FlxObject, b:FlxObject):void
 		{
 			var bullet:Bullet;
-			if (a instanceof Bullet)
+			if (a is Bullet)
 				bullet = a as Bullet;
 			else
 				bullet = b as Bullet;

@@ -4,21 +4,47 @@ package
 	public class Enemy extends FlxSprite
 	{
 		private const SPEED:int = 1;
+		private var moveFunction:Function;
 		
 		public function Enemy() 
 		{
 			loadGraphic(Assets.G_BLACK_SHEEP);
 			x = Main.GAME_WIDTH / 2;
 			y = Main.GAME_HEIGHT / 2;
+			moveFunction = cowardMove;
 		}
 		
 		override public function update():void
 		{
 			super.update();
-			trackerMove();
+			moveFunction();
 			keepInBounds();
 		}
 		
+
+		public function change():void
+		{
+			var changeShape:int = Math.random() * 2;
+			if (changeShape == 1) 
+			{
+				toSheep();
+			}
+			else 
+			{
+				toGoblin();
+			}
+		}
+		
+		public function toSheep():void
+		{
+			loadGraphic(Assets.G_BLACK_SHEEP);
+			moveFunction = cowardMove;
+		}
+		public function toGoblin():void
+		{
+			loadGraphic(Assets.G_HOBGOBLIN);
+			moveFunction = trackerMove;
+		}
 		
 		private function trackerMove():void
 		{

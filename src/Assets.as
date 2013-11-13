@@ -8,14 +8,20 @@ package
 		public static const G_TILES:Class;
 		
 		//ENEMIES!!!
+		[Embed(source = "../res/dark-wizard.png")] 			
+		public static const G_DARK_WIZARD:Class;
 		[Embed(source = "../res/black-sheep.png")] 			
 		public static const G_BLACK_SHEEP:Class;	//Every family has one. This game has many
+		[Embed(source = "../res/hobgoblin.png")]
+		public static const G_HOBGOBLIN:Class;
 		
 		//Player
 		[Embed(source = "../res/wizard.png")] 			
 		public static const G_WIZARD:Class;
 		[Embed(source = "../res/sheep.png")] 			
 		public static const G_SHEEP:Class;
+		[Embed(source = "../res/goblin.png")]
+		public static const G_GOBLIN:Class;
 		
 		//Projectiles
 		[Embed(source = "../res/fireball.png")] 			
