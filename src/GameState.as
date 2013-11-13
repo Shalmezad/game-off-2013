@@ -7,7 +7,7 @@ package
 		private var changeTick:int = 0;
 		private var gui:GUI;
 		private var bullets:BulletGroup;
-		private var enemies:FlxGroup;
+		private var enemies:EnemyGroup;
 		private var playerDead:Boolean = false;
 		
 		public function GameState() 
@@ -18,9 +18,12 @@ package
 			Registry.player = new Player();
 			add(Registry.player);
 			
-			enemies = new FlxGroup();
+			/*enemies = new FlxGroup();
 			enemies.add(new Enemy());
 			enemies.add(new Enemy());
+			add(enemies);
+			*/
+			enemies = new EnemyGroup();
 			add(enemies);
 			
 			bullets = new BulletGroup();

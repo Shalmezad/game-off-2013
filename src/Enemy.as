@@ -18,6 +18,11 @@ package
 			maxVelocity.y = 80;
 		}
 		
+		public function start():void
+		{
+			
+		}
+		
 		override public function update():void
 		{
 			super.update();
