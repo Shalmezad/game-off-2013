@@ -5,6 +5,7 @@ package
 	{
 		private const SPEED:int = 1;
 		private var moveFunction:Function;
+		private var changeColor:int = 0;
 		
 		public function Enemy() 
 		{
@@ -19,11 +20,18 @@ package
 			super.update();
 			moveFunction();
 			keepInBounds();
+						
+			changeColor+= 5;
+			if (changeColor > 255)
+				changeColor = 255;
+			var intVal:int = changeColor << 16 | changeColor << 8 | changeColor;
+			this.color = intVal;
 		}
 		
 
 		public function change():void
 		{
+			changeColor = 0;
 			var changeShape:int = Math.random() * 2;
 			if (changeShape == 1) 
 			{
