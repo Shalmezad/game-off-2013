@@ -12,6 +12,9 @@ package
 		private const WIZARD_ACCEL:int = 160;
 		private const WIZARD_MAX_VEL:int = 200;
 		
+		private const GOBLIN_ACCEL:int = 100;
+		private const GOBLIN_MAX_VEL:int = 160;
+		
 		private var accel:int;
 		
 		public function Player() 
@@ -26,14 +29,18 @@ package
 		public function change():void
 		{
 			changeColor = 0;
-			var changeShape:int = Math.random() * 2;
-			if (changeShape == 1) 
+			var changeShape:int = Math.random() * 3;
+			if (changeShape == 0) 
 			{
 				toSheep();
 			}
-			else 
+			else if(changeShape == 1)
 			{
 				toWizard();
+			}
+			else
+			{
+				toGoblin();
 			}
 		}
 		
@@ -50,6 +57,14 @@ package
 			accel = WIZARD_ACCEL;
 			maxVelocity.x = WIZARD_MAX_VEL;
 			maxVelocity.y = WIZARD_MAX_VEL;
+		}
+		
+		public function toGoblin():void
+		{
+			loadGraphic(Assets.G_GOBLIN);
+			accel = GOBLIN_ACCEL;
+			maxVelocity.x = GOBLIN_MAX_VEL;
+			maxVelocity.y = GOBLIN_MAX_VEL;
 		}
 		
 		override public function update():void
