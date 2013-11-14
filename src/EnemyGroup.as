@@ -16,6 +16,17 @@ package
 			}
 		}
 		
+		override public function update():void
+		{
+			super.update();
+			//check the number of alive
+			if (this.countLiving() < NORMAL_SCREEN_COUNT)
+			{
+				//we need to make some more!
+				var enemy:Enemy = recycle(Enemy) as Enemy;
+				enemy.start();
+			}
+		}
 	}
 
 }

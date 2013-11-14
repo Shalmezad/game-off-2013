@@ -24,6 +24,9 @@ package
 			drag.x = 100;
 			drag.y = 100;
 			health = 100;
+			
+			x = Main.GAME_WIDTH / 2;
+			y = Main.GAME_HEIGHT / 2;
 		}
 		
 		public function change():void

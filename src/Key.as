@@ -22,6 +22,17 @@ package
 			return FlxG.keys.DOWN || FlxG.keys.S;
 		}
 		
+		public static function get RESET():Boolean
+		{
+			if (Main.DEV_CHEAT)
+			{
+				return FlxG.keys.justReleased("R");
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 
 }

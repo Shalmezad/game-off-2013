@@ -16,11 +16,35 @@ package
 			moveFunction = cowardMove;
 			maxVelocity.x = 80;
 			maxVelocity.y = 80;
+			start();
 		}
 		
 		public function start():void
 		{
-			
+			change();
+			this.exists = true;
+			this.alive = true;
+			var side:int = Math.random() * 4;
+			if (side == 0) {
+				//left
+				this.x = -40;
+				this.y = Math.random() * Main.GAME_HEIGHT;
+			}
+			else if (side == 1) {
+				//top
+				this.x = Math.random() * Main.GAME_WIDTH;
+				this.y = -40;
+			}
+			else if (side == 2) {
+				//right
+				this.x = Main.GAME_WIDTH + 20;
+				this.y = Math.random() * Main.GAME_HEIGHT;
+			}
+			else {
+				//bottom
+				this.x = Math.random() * Main.GAME_WIDTH;
+				this.y = Main.GAME_HEIGHT + 20;
+			}
 		}
 		
 		override public function update():void

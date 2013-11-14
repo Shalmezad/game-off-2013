@@ -41,6 +41,10 @@ package
 		override public function update():void
 		{
 			super.update();
+			if (Key.RESET)
+			{
+				FlxG.switchState(new GameState());
+			}
 			FlxG.collide(bullets, enemies, enemyBulletCollision);
 			FlxG.collide(enemies, enemies);
 			FlxG.collide(Registry.player, enemies, enemyPlayerCollision);
