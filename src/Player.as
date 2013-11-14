@@ -8,14 +8,18 @@ package
 		
 		private const SHEEP_ACCEL:int = 240;
 		private const SHEEP_MAX_VEL:int = 240;
+		public static const TYPE_SHEEP:int = 1;
 		
 		private const WIZARD_ACCEL:int = 160;
 		private const WIZARD_MAX_VEL:int = 200;
+		public static const TYPE_WIZARD:int = 2;
 		
 		private const GOBLIN_ACCEL:int = 100;
 		private const GOBLIN_MAX_VEL:int = 160;
+		public static const TYPE_GOBLIN:int = 3;
 		
 		private var accel:int;
+		public var playerType:int;
 		
 		public function Player() 
 		{
@@ -27,6 +31,7 @@ package
 			
 			x = Main.GAME_WIDTH / 2;
 			y = Main.GAME_HEIGHT / 2;
+			change();
 		}
 		
 		public function change():void
@@ -53,6 +58,7 @@ package
 			accel = SHEEP_ACCEL;
 			maxVelocity.x = SHEEP_MAX_VEL;
 			maxVelocity.y = SHEEP_MAX_VEL;
+			playerType = TYPE_SHEEP;
 		}
 		public function toWizard():void
 		{
@@ -60,6 +66,7 @@ package
 			accel = WIZARD_ACCEL;
 			maxVelocity.x = WIZARD_MAX_VEL;
 			maxVelocity.y = WIZARD_MAX_VEL;
+			playerType = TYPE_WIZARD;
 		}
 		
 		public function toGoblin():void
@@ -68,6 +75,7 @@ package
 			accel = GOBLIN_ACCEL;
 			maxVelocity.x = GOBLIN_MAX_VEL;
 			maxVelocity.y = GOBLIN_MAX_VEL;
+			playerType = TYPE_GOBLIN;
 		}
 		
 		override public function update():void

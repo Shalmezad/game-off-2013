@@ -64,7 +64,7 @@ package
 				}
 			}
 			
-			if (FlxG.mouse.justReleased()) 
+			if (FlxG.mouse.justReleased() && Registry.player.playerType == Player.TYPE_WIZARD) 
 			{
 				bullets.addBullet(	Registry.player.x, 
 									Registry.player.y, 
@@ -82,16 +82,32 @@ package
 		
 		private function enemyPlayerCollision(a:FlxObject, b:FlxObject):void
 		{
+			var enemy:Enemy;
+			if (a is Enemy)
+			{
+				enemy = a as Enemy;
+			}
+			else
+			{
+				enemy = b as Enemy;
+			}
 			Registry.player.hurt(1);
+			if (Registry.player.playerType == Player.TYPE_GOBLIN) {
+				enemy.kill();
+			}
 		}
 		
 		private function enemyBulletCollision(a:FlxObject, b:FlxObject) :void
 		{
 			var enemy:Enemy;
 			if (a is Enemy)
+			{
 				enemy = a as Enemy;
+			}
 			else
+			{
 				enemy = b as Enemy;
+			}
 			add(new Explosion(enemy.x, enemy.y, 0xFFAA0000));
 			a.kill();
 			b.kill();
@@ -102,9 +118,13 @@ package
 		{
 			var bullet:Bullet;
 			if (a is Bullet)
+			{
 				bullet = a as Bullet;
+			}
 			else
+			{
 				bullet = b as Bullet;
+			}
 			bullet.kill();
 			Registry.player.hurt(10);
 		}
