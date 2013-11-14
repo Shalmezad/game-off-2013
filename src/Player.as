@@ -18,6 +18,8 @@ package
 		private const GOBLIN_MAX_VEL:int = 160;
 		public static const TYPE_GOBLIN:int = 3;
 		
+		private const MAX_HEALTH:int = 100;
+		
 		private var accel:int;
 		public var playerType:int;
 		
@@ -27,7 +29,7 @@ package
 			accel = WIZARD_ACCEL;
 			drag.x = 100;
 			drag.y = 100;
-			health = 100;
+			health = MAX_HEALTH;
 			
 			x = Main.GAME_WIDTH / 2;
 			y = Main.GAME_HEIGHT / 2;
@@ -110,6 +112,13 @@ package
 			this.color = intVal;
 			
 			keepInBounds();
+			
+			if (health > 0) {
+				health += .005;
+				if (health > MAX_HEALTH) {
+					health = MAX_HEALTH;
+				}
+			}
 		}
 		
 		private function keepInBounds():void
