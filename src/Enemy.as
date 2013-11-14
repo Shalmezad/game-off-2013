@@ -4,6 +4,11 @@ package
 	public class Enemy extends FlxSprite
 	{
 		private const SPEED:int = 60;
+		private const TYPE_WIZARD:int = 1;
+		private const TYPE_GOBLIN:int = 2;
+		private const TYPE_SHEEP:int = 3;
+		
+		private var enemyType:int;
 		private var moveFunction:Function;
 		private var changeColor:int = 0;
 		private var coolDown:int = 0;
@@ -61,7 +66,7 @@ package
 				var intVal:int = changeColor << 16 | changeColor << 8 | changeColor;
 				this.color = intVal;
 				coolDown--;
-				if (coolDown <= 0) {
+				if (coolDown <= 0 && enemyType == TYPE_WIZARD) {
 					Registry.enemyBullets.addBullet(	x, 
 														y, 
 														angle, 
@@ -94,16 +99,19 @@ package
 		{
 			loadGraphic(Assets.G_BLACK_SHEEP);
 			moveFunction = cowardMove;
+			enemyType = TYPE_SHEEP;
 		}
 		public function toGoblin():void
 		{
 			loadGraphic(Assets.G_HOBGOBLIN);
 			moveFunction = trackerMove;
+			enemyType = TYPE_GOBLIN;
 		}
 		public function toWizard():void
 		{
 			loadGraphic(Assets.G_DARK_WIZARD);
 			moveFunction = shooterMove;
+			enemyType = TYPE_WIZARD;
 		}
 		
 		private function trackerMove():void
