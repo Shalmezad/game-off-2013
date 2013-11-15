@@ -7,7 +7,7 @@ package
 		private var changeTick:int = 0;
 		private var gui:GUI;
 		private var bullets:BulletGroup;
-		private var enemies:EnemyGroup;
+		//private var enemies:EnemyGroup;
 		private var playerDead:Boolean = false;
 		
 		public function GameState() 
@@ -18,8 +18,8 @@ package
 			Registry.player = new Player();
 			add(Registry.player);
 			
-			enemies = new EnemyGroup();
-			add(enemies);
+			Registry.enemies = new EnemyGroup();
+			add(Registry.enemies);
 			
 			bullets = new BulletGroup();
 			add(bullets);
@@ -40,9 +40,9 @@ package
 			{
 				FlxG.switchState(new GameState());
 			}
-			FlxG.collide(bullets, enemies, enemyBulletCollision);
-			FlxG.collide(enemies, enemies);
-			FlxG.collide(Registry.player, enemies, enemyPlayerCollision);
+			FlxG.collide(bullets, Registry.enemies, enemyBulletCollision);
+			FlxG.collide(Registry.enemies, Registry.enemies);
+			FlxG.collide(Registry.player, Registry.enemies, enemyPlayerCollision);
 			FlxG.overlap(Registry.player, Registry.enemyBullets, bulletPlayerCollision);
 			changeTick++;
 			if (changeTick >= 300) 
@@ -51,13 +51,15 @@ package
 				//Registry.player.change();
 				gui.startSlots();
 				floor.change();
-				for each(var enemy:Enemy in enemies.members) 
+				/*
+				for each(var enemy:Enemy in Registry.enemies.members) 
 				{
 					if (enemy.alive)
 					{
 						enemy.change();
 					}
 				}
+				*/
 			}
 			
 			if (FlxG.mouse.justReleased() && Registry.player.playerType == Player.TYPE_WIZARD) 
@@ -122,7 +124,7 @@ package
 				bullet = b as Bullet;
 			}
 			bullet.kill();
-			Registry.player.hurt(10);
+			Registry.player.hurt(5);
 		}
 		
 	}

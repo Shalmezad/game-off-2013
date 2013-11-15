@@ -5,7 +5,9 @@ package
 	{
 		private var healthText:FlxText;
 		public var playerHealth:int = 100;
-		private var mainSlot:SlotReel;
+		
+		private var playerSlot:SlotReel;
+		private var enemySlot:SlotReel;
 		
 		public function GUI() 
 		{
@@ -19,13 +21,16 @@ package
 			//add(new SlotReel(Main.GAME_CENTER_X-24, 200));
 			//add(new SlotReel(Main.GAME_CENTER_X-8, 200));
 			//add(new SlotReel(Main.GAME_CENTER_X+8, 200));
-			mainSlot = new SlotReel(Main.GAME_CENTER_X - 8, 200);
-			add(mainSlot);
+			playerSlot = new SlotReel(Main.GAME_CENTER_X - 16, 200);
+			enemySlot = new SlotReel(Main.GAME_CENTER_X , 200, SlotReel.SLOT_TYPE_ENEMY);
+			add(playerSlot);
+			add(enemySlot);
 		}
 		
 		public function startSlots():void
 		{
-			mainSlot.startSlot();
+			playerSlot.startSlot();
+			enemySlot.startSlot();
 		}
 		
 		override public function update():void

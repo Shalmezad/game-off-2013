@@ -58,10 +58,13 @@ package
 			//and act
 			if (slotType == SLOT_TYPE_PLAYER)
 				slotActPlayer();
+			else if (slotType == SLOT_TYPE_ENEMY)
+				slotActEnemy();
 		}
 		
 		public function startSlot():void
 		{
+			switchTick = 0;
 			currentTime = 0;
 			spinning = true;
 		}
@@ -89,10 +92,35 @@ package
 			}
 		}
 		
+		private function slotActEnemy():void
+		{
+			switch(currentSlot)
+			{
+				case 0:
+					//joker
+					Registry.enemies.change();
+					break;
+				case 1:
+					//goblin
+					Registry.enemies.toGoblin();
+					break;
+				case 2:
+					//sheep
+					Registry.enemies.toSheep();
+					break;
+				case 3:
+					//wizard
+					Registry.enemies.toWizard();
+					break;
+			}
+		}
+		
 		private function spin():void
 		{
 			if (slotType == SLOT_TYPE_PLAYER)
 				slotSpinPlayer();
+			else if (slotType == SLOT_TYPE_ENEMY)
+				slotSpinEnemy();
 		}
 		
 		private function slotSpinPlayer():void
@@ -114,6 +142,31 @@ package
 					break;
 				case 3:
 					slot.loadGraphic(Assets.G_SLOT_WIZARD);
+					currentSlot = 3;
+					break;
+			}
+		}
+		
+		
+		private function slotSpinEnemy():void
+		{
+			var reelType:int = Math.random() * 4;
+			switch(reelType)
+			{
+				case 0:
+					slot.loadGraphic(Assets.G_JOKER_2);
+					currentSlot = 0;
+					break;
+				case 1:
+					slot.loadGraphic(Assets.G_SLOT_HOBGOBLIN);
+					currentSlot = 1;
+					break;
+				case 2:
+					slot.loadGraphic(Assets.G_SLOT_BLACK_SHEEP);
+					currentSlot = 2;
+					break;
+				case 3:
+					slot.loadGraphic(Assets.G_SLOT_DARK_WIZARD);
 					currentSlot = 3;
 					break;
 			}

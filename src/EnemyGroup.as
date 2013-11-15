@@ -27,6 +27,39 @@ package
 				enemy.start();
 			}
 		}
+		
+		public function change():void
+		{
+			for each(var enemy:Enemy in members)
+			{
+				enemy.change();
+			}
+		}
+		
+		
+		public function toSheep():void
+		{
+			for each(var enemy:Enemy in members)
+			{
+				enemy.toSheep();
+			}
+		}
+		
+		public function toWizard():void
+		{
+			for each(var enemy:Enemy in members)
+			{
+				enemy.toWizard();
+			}
+		}
+		
+		public function toGoblin():void
+		{
+			for each(var enemy:Enemy in members)
+			{
+				enemy.toGoblin();
+			}
+		}
 	}
 
 }

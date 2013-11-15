@@ -41,7 +41,13 @@ package
 		[Embed(source = "../res/slots/sheep.png")]
 		public static const G_SLOT_SHEEP:Class;
 		[Embed(source = "../res/slots/wizard.png")]
-		public static const G_SLOT_WIZARD:Class;		
+		public static const G_SLOT_WIZARD:Class;
+		[Embed(source = "../res/slots/hobgoblin.png")]
+		public static const G_SLOT_HOBGOBLIN:Class;	//why just be a slot goblin?
+		[Embed(source = "../res/slots/black-sheep.png")]
+		public static const G_SLOT_BLACK_SHEEP:Class;
+		[Embed(source = "../res/slots/dark-wizard.png")]
+		public static const G_SLOT_DARK_WIZARD:Class;
 		
 		//misc
 		[Embed(source = "../res/disco_fg.png")] 			
