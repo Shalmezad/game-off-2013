@@ -29,6 +29,14 @@ package
 		[Embed(source = "../res/blue-fireball.png")] 			
 		public static const G_BLUE_FIREBALL:Class;
 		
+		//Slots
+		[Embed(source = "../res/slots/joker1.png")]
+		public static const G_JOKER_1:Class;
+		[Embed(source = "../res/slots/joker2.png")]
+		public static const G_JOKER_2:Class;
+		[Embed(source = "../res/slots/joker3.png")]
+		public static const G_JOKER_3:Class;
+		
 		//misc
 		[Embed(source = "../res/disco_fg.png")] 			
 		public static const G_DISCO:Class;
