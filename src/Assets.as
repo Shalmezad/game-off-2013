@@ -36,6 +36,12 @@ package
 		public static const G_JOKER_2:Class;
 		[Embed(source = "../res/slots/joker3.png")]
 		public static const G_JOKER_3:Class;
+		[Embed(source = "../res/slots/goblin.png")]
+		public static const G_SLOT_GOBLIN:Class;	//don't wanna be a hobgoblin? be a slot goblin!
+		[Embed(source = "../res/slots/sheep.png")]
+		public static const G_SLOT_SHEEP:Class;
+		[Embed(source = "../res/slots/wizard.png")]
+		public static const G_SLOT_WIZARD:Class;		
 		
 		//misc
 		[Embed(source = "../res/disco_fg.png")] 			

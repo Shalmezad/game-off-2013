@@ -48,7 +48,8 @@ package
 			if (changeTick >= 300) 
 			{
 				changeTick = 0;
-				Registry.player.change();
+				//Registry.player.change();
+				gui.startSlots();
 				floor.change();
 				for each(var enemy:Enemy in enemies.members) 
 				{
