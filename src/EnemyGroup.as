@@ -4,13 +4,15 @@ package
 	public class EnemyGroup extends FlxGroup
 	{
 		private const NORMAL_SCREEN_COUNT:int = 5;
+		private var enemyType:int = Enemy.TYPE_RANDOM;
+		
 		public function EnemyGroup() 
 		{
 			for (var i:int = 0; i < NORMAL_SCREEN_COUNT; i++) {
 				//make an enemy
 				var enemy:Enemy = new Enemy();
 				//reset it
-				enemy.start();
+				enemy.start(enemyType);
 				//add it
 				add(enemy);
 			}
@@ -24,12 +26,13 @@ package
 			{
 				//we need to make some more!
 				var enemy:Enemy = recycle(Enemy) as Enemy;
-				enemy.start();
+				enemy.start(enemyType);
 			}
 		}
 		
 		public function change():void
 		{
+			enemyType = Enemy.TYPE_RANDOM;
 			for each(var enemy:Enemy in members)
 			{
 				enemy.change();
@@ -39,6 +42,7 @@ package
 		
 		public function toSheep():void
 		{
+			enemyType = Enemy.TYPE_SHEEP;
 			for each(var enemy:Enemy in members)
 			{
 				enemy.toSheep();
@@ -47,6 +51,7 @@ package
 		
 		public function toWizard():void
 		{
+			enemyType = Enemy.TYPE_WIZARD;
 			for each(var enemy:Enemy in members)
 			{
 				enemy.toWizard();
@@ -55,6 +60,7 @@ package
 		
 		public function toGoblin():void
 		{
+			enemyType = Enemy.TYPE_GOBLIN;
 			for each(var enemy:Enemy in members)
 			{
 				enemy.toGoblin();

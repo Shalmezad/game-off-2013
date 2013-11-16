@@ -5,7 +5,7 @@ package
 	{
 		
 		private const SLOT_HEIGHT:int = 16;
-		private const SLOT_SPIN_TIME:int = 200;
+		private const SLOT_SPIN_TIME:int = 300;
 		
 		public static const SLOT_TYPE_PLAYER:int = 0;
 		public static const SLOT_TYPE_ENEMY:int = 1;
@@ -39,7 +39,7 @@ package
 			{
 				currentTime++;
 				switchTick++;
-				if (switchTick >= 10)
+				if (switchTick >= 7)
 				{
 					switchTick = 0;
 					spin();

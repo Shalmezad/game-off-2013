@@ -4,9 +4,10 @@ package
 	public class Enemy extends FlxSprite
 	{
 		private const SPEED:int = 60;
-		private const TYPE_WIZARD:int = 1;
-		private const TYPE_GOBLIN:int = 2;
-		private const TYPE_SHEEP:int = 3;
+		public static const TYPE_RANDOM:int = 0;
+		public static const TYPE_WIZARD:int = 1;
+		public static const TYPE_GOBLIN:int = 2;
+		public static const TYPE_SHEEP:int = 3;
 		
 		private var enemyType:int;
 		private var moveFunction:Function;
@@ -24,9 +25,23 @@ package
 			start();
 		}
 		
-		public function start():void
+		public function start(type:int = TYPE_RANDOM):void
 		{
-			change();
+			switch(type)
+			{
+				case TYPE_RANDOM:
+					change();
+					break;
+				case TYPE_WIZARD:
+					toWizard();
+					break;
+				case TYPE_GOBLIN:
+					toGoblin();
+					break;
+				case TYPE_SHEEP:
+					toSheep();
+					break;
+			}
 			this.exists = true;
 			this.alive = true;
 			var side:int = Math.random() * 4;

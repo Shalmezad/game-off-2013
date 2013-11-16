@@ -20,8 +20,8 @@ package
 			add(branding);
 			
 			playerSlot = new SlotReel(Main.GAME_CENTER_X - 24, 200);
-			enemySlot = new SlotReel(Main.GAME_CENTER_X -8, 200, SlotReel.SLOT_TYPE_ENEMY);
-			otherSlot = new SlotReel(Main.GAME_CENTER_X +8, 200, SlotReel.SLOT_TYPE_OTHER);
+			enemySlot = new SlotReel(Main.GAME_CENTER_X - 8, 200, SlotReel.SLOT_TYPE_ENEMY);
+			otherSlot = new SlotReel(Main.GAME_CENTER_X + 8, 200, SlotReel.SLOT_TYPE_OTHER);
 			
 			add(playerSlot);
 			add(enemySlot);

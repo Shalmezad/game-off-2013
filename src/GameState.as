@@ -9,6 +9,7 @@ package
 		private var bullets:BulletGroup;
 		//private var enemies:EnemyGroup;
 		private var playerDead:Boolean = false;
+		private var coolDown:int = 0;
 		
 		public function GameState() 
 		{	
@@ -45,15 +46,19 @@ package
 			FlxG.collide(Registry.player, Registry.enemies, enemyPlayerCollision);
 			FlxG.overlap(Registry.player, Registry.enemyBullets, bulletPlayerCollision);
 			changeTick++;
-			if (changeTick >= 300) 
+			if (changeTick >= 1000) 
 			{
 				changeTick = 0;
 				gui.startSlots();
 				//Registry.floor.change();
 			}
-			
-			if (FlxG.mouse.justReleased() && Registry.player.playerType == Player.TYPE_WIZARD) 
+			coolDown--;
+			if (FlxG.mouse.pressed() && 
+				Registry.player.playerType == Player.TYPE_WIZARD &&
+				Registry.player.health > 0 &&
+				coolDown <= 0) 
 			{
+				coolDown = 20;
 				bullets.addBullet(	Registry.player.x, 
 									Registry.player.y, 
 									Registry.player.angle, 
@@ -82,6 +87,7 @@ package
 			Registry.player.hurt(1);
 			if (Registry.player.playerType == Player.TYPE_GOBLIN) {
 				enemy.kill();
+				Registry.player.health += 1;
 			}
 		}
 		
