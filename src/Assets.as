@@ -48,6 +48,12 @@ package
 		public static const G_SLOT_BLACK_SHEEP:Class;
 		[Embed(source = "../res/slots/dark-wizard.png")]
 		public static const G_SLOT_DARK_WIZARD:Class;
+		[Embed(source = "../res/slots/ice.png")]
+		public static const G_SLOT_ICE:Class;
+		[Embed(source = "../res/slots/sand.png")]
+		public static const G_SLOT_SAND:Class;
+		[Embed(source = "../res/slots/greentile.png")]
+		public static const G_SLOT_TILE:Class;
 		
 		//misc
 		[Embed(source = "../res/disco_fg.png")] 			

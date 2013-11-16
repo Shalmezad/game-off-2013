@@ -60,6 +60,8 @@ package
 				slotActPlayer();
 			else if (slotType == SLOT_TYPE_ENEMY)
 				slotActEnemy();
+			else
+				slotActOther();
 		}
 		
 		public function startSlot():void
@@ -115,12 +117,34 @@ package
 			}
 		}
 		
+		private function slotActOther():void
+		{
+			//joker, tile, sand, ice
+			switch(currentSlot)
+			{
+				case 0:
+					Registry.floor.change();
+					break;
+				case 1:
+					Registry.floor.toTile();
+					break;
+				case 2:
+					Registry.floor.toSand();
+					break;
+				case 3:
+					Registry.floor.toIce();
+					break;
+			}
+		}
+		
 		private function spin():void
 		{
 			if (slotType == SLOT_TYPE_PLAYER)
 				slotSpinPlayer();
 			else if (slotType == SLOT_TYPE_ENEMY)
 				slotSpinEnemy();
+			else
+				slotSpinOther();
 		}
 		
 		private function slotSpinPlayer():void
@@ -167,6 +191,31 @@ package
 					break;
 				case 3:
 					slot.loadGraphic(Assets.G_SLOT_DARK_WIZARD);
+					currentSlot = 3;
+					break;
+			}
+		}
+		
+		
+		private function slotSpinOther():void
+		{
+			var reelType:int = Math.random() * 4;
+			switch(reelType)
+			{
+				case 0:
+					slot.loadGraphic(Assets.G_JOKER_3);
+					currentSlot = 0;
+					break;
+				case 1:
+					slot.loadGraphic(Assets.G_SLOT_TILE);
+					currentSlot = 1;
+					break;
+				case 2:
+					slot.loadGraphic(Assets.G_SLOT_SAND);
+					currentSlot = 2;
+					break;
+				case 3:
+					slot.loadGraphic(Assets.G_SLOT_ICE);
 					currentSlot = 3;
 					break;
 			}

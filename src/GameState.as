@@ -12,8 +12,8 @@ package
 		
 		public function GameState() 
 		{	
-			floor = new Floor();
-			add(floor);
+			Registry.floor = new Floor();
+			add(Registry.floor);
 			
 			Registry.player = new Player();
 			add(Registry.player);
@@ -48,18 +48,8 @@ package
 			if (changeTick >= 300) 
 			{
 				changeTick = 0;
-				//Registry.player.change();
 				gui.startSlots();
-				floor.change();
-				/*
-				for each(var enemy:Enemy in Registry.enemies.members) 
-				{
-					if (enemy.alive)
-					{
-						enemy.change();
-					}
-				}
-				*/
+				//Registry.floor.change();
 			}
 			
 			if (FlxG.mouse.justReleased() && Registry.player.playerType == Player.TYPE_WIZARD) 
