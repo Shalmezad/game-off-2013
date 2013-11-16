@@ -8,6 +8,7 @@ package
 		
 		private var playerSlot:SlotReel;
 		private var enemySlot:SlotReel;
+		private var otherSlot:SlotReel;
 		
 		public function GUI() 
 		{
@@ -18,19 +19,20 @@ package
 			branding = new FlxText(320 - 100, 5, 100, "Shalmezad");
 			add(branding);
 			
-			//add(new SlotReel(Main.GAME_CENTER_X-24, 200));
-			//add(new SlotReel(Main.GAME_CENTER_X-8, 200));
-			//add(new SlotReel(Main.GAME_CENTER_X+8, 200));
-			playerSlot = new SlotReel(Main.GAME_CENTER_X - 16, 200);
-			enemySlot = new SlotReel(Main.GAME_CENTER_X , 200, SlotReel.SLOT_TYPE_ENEMY);
+			playerSlot = new SlotReel(Main.GAME_CENTER_X - 24, 200);
+			enemySlot = new SlotReel(Main.GAME_CENTER_X -8, 200, SlotReel.SLOT_TYPE_ENEMY);
+			otherSlot = new SlotReel(Main.GAME_CENTER_X +8, 200, SlotReel.SLOT_TYPE_OTHER);
+			
 			add(playerSlot);
 			add(enemySlot);
+			add(otherSlot);
 		}
 		
 		public function startSlots():void
 		{
 			playerSlot.startSlot();
 			enemySlot.startSlot();
+			otherSlot.startSlot();
 		}
 		
 		override public function update():void

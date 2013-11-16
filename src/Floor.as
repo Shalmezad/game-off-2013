@@ -37,7 +37,7 @@ package
 				toSand();
 		}
 		
-		private function toIce():void
+		public function toIce():void
 		{			
 			for (var i:int = 0; i < Main.GAME_HEIGHT / 20; i++) 
 			{
@@ -47,7 +47,7 @@ package
 				}
 			}
 		}
-		private function toSand():void
+		public function toSand():void
 		{
 			for (var i:int = 0; i < Main.GAME_HEIGHT / 20; i++) 
 			{
@@ -57,7 +57,7 @@ package
 				}
 			}
 		}
-		private function toTile():void
+		public function toTile():void
 		{
 			for (var i:int = 0; i < Main.GAME_HEIGHT / 20; i++) 
 			{
