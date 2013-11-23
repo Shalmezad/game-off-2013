@@ -19,6 +19,11 @@ package
 			branding = new FlxText(320 - 100, 5, 100, "Shalmezad");
 			add(branding);
 			
+			var slotBG:FlxSprite;
+			slotBG = new FlxSprite(Main.GAME_CENTER_X - 26, 200 - 2);
+			slotBG.loadGraphic(Assets.G_SLOT_BACKGROUND);
+			add(slotBG);
+			
 			playerSlot = new SlotReel(Main.GAME_CENTER_X - 24, 200);
 			enemySlot = new SlotReel(Main.GAME_CENTER_X - 8, 200, SlotReel.SLOT_TYPE_ENEMY);
 			otherSlot = new SlotReel(Main.GAME_CENTER_X + 8, 200, SlotReel.SLOT_TYPE_OTHER);
