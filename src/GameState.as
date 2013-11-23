@@ -77,7 +77,7 @@ package
 				deadCount++;
 				if (deadCount > 120)
 				{
-					FlxG.switchState(new MenuState());
+					FlxG.switchState(new GameOverState(gui.score));
 				}
 			}
 		}
