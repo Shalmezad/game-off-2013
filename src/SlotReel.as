@@ -32,6 +32,11 @@ package
 			currentTime = 0;
 		}
 		
+		public function set scale(scale:FlxPoint):void
+		{
+			slot.scale = scale;
+		}
+		
 		override public function update():void
 		{
 			super.update();

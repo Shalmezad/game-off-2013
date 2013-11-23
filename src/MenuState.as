@@ -11,7 +11,7 @@ package
 			add(new FlxButton(30, 50, "Start", startGame));
 		}
 		
-		private function startGame()
+		private function startGame():void
 		{
 			FlxG.switchState(new GameState());
 		}
