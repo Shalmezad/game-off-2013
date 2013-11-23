@@ -10,6 +10,7 @@ package
 		//private var enemies:EnemyGroup;
 		private var playerDead:Boolean = false;
 		private var coolDown:int = 0;
+		private var deadCount:int = 0;
 		
 		public function GameState() 
 		{	
@@ -70,6 +71,14 @@ package
 				playerDead = true;
 				//add some explosions!!!
 				add(new Explosion(Registry.player.x, Registry.player.y, 0xFFCC2222));
+			}
+			if (playerDead)
+			{
+				deadCount++;
+				if (deadCount > 120)
+				{
+					FlxG.switchState(new MenuState());
+				}
 			}
 		}
 		

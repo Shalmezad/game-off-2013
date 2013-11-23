@@ -13,7 +13,7 @@ package
 		
 		public function Main():void 
 		{
-			super(GAME_WIDTH, GAME_HEIGHT, GameState, 2, 60,30,true);
+			super(GAME_WIDTH, GAME_HEIGHT, MenuState, 2, 60,30,true);
 			FlxG.debug = true;
 		}
 		
