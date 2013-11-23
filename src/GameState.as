@@ -95,6 +95,7 @@ package
 			}
 			Registry.player.hurt(1);
 			if (Registry.player.playerType == Player.TYPE_GOBLIN) {
+				gui.addScore(enemy.enemyType);
 				enemy.kill();
 				Registry.player.health += 1;
 			}
@@ -111,6 +112,7 @@ package
 			{
 				enemy = b as Enemy;
 			}
+			gui.addScore(enemy.enemyType);
 			add(new Explosion(enemy.x, enemy.y, 0xFFAA0000));
 			a.kill();
 			b.kill();

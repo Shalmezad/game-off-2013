@@ -9,7 +9,7 @@ package
 		public static const TYPE_GOBLIN:int = 2;
 		public static const TYPE_SHEEP:int = 3;
 		
-		private var enemyType:int;
+		public var enemyType:int;
 		private var moveFunction:Function;
 		private var changeColor:int = 0;
 		private var coolDown:int = 0;

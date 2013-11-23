@@ -6,6 +6,9 @@ package
 		private var healthText:FlxText;
 		public var playerHealth:int = 100;
 		
+		private var scoreText:FlxText;
+		public var score:int = 0;
+		
 		private var playerSlot:SlotReel;
 		private var enemySlot:SlotReel;
 		private var otherSlot:SlotReel;
@@ -15,9 +18,8 @@ package
 			healthText = new FlxText(10, 10, 200, "Health: 100/100");
 			add(healthText);
 			
-			var branding:FlxText;
-			branding = new FlxText(320 - 100, 5, 100, "Shalmezad");
-			add(branding);
+			scoreText = new FlxText(320 - 100, 5, 100, "Score: " + score);
+			add(scoreText);
 			
 			var slotBG:FlxSprite;
 			slotBG = new FlxSprite(Main.GAME_CENTER_X - 26, 210 - 2);
@@ -32,18 +34,32 @@ package
 			
 			playerSlot.scale = new FlxPoint(2, 2);
 			playerSlot.setAll("x", Main.GAME_CENTER_X - 48);
-			//playerSlot.x = Main.GAME_CENTER_X - 48;
 			enemySlot.scale = new FlxPoint(2, 2);
 			enemySlot.setAll("x", Main.GAME_CENTER_X - 16);
-			//enemySlot.x = Main.GAME_CENTER_X - 16;
 			otherSlot.scale = new FlxPoint(2, 2);
 			otherSlot.setAll("x", Main.GAME_CENTER_X + 16);
-			//otherSlot.x = Main.GAME_CENTER_X + 16;
 			
 			
 			add(playerSlot);
 			add(enemySlot);
 			add(otherSlot);
+		}
+		
+		public function addScore(enemyType:int):void
+		{
+			switch(enemyType)
+			{
+				case Enemy.TYPE_SHEEP:
+					score += 10;
+					break;
+				case Enemy.TYPE_GOBLIN:
+					score += 20;
+					break;
+				case Enemy.TYPE_WIZARD:
+					score += 30;
+					break;
+			}
+			scoreText.text = "Score: " + score;
 		}
 		
 		public function startSlots():void
