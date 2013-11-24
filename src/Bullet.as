@@ -5,6 +5,8 @@ package
 	{
 		
 		private const SPEED:int = 1;
+		private var xSpeed:Number;
+		private var ySpeed:Number;
 		
 		public function Bullet() 
 		{
@@ -18,14 +20,16 @@ package
 			this.y = y;
 			this.exists = true;
 			this.alive = true;
+			this.xSpeed = SPEED * Math.cos(angle * Math.PI / 180.0);
+			this.ySpeed = SPEED * Math.sin(angle * Math.PI / 180.0);
 		}
 		
 		override public function update():void
 		{
 			super.update();
 			
-			x += SPEED * Math.cos(angle * Math.PI / 180.0);
-			y += SPEED * Math.sin(angle * Math.PI / 180.0);
+			x += this.xSpeed;
+			y += this.ySpeed;
 			
 			if (!onScreen()) 
 			{

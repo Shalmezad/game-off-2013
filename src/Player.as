@@ -103,7 +103,7 @@ package
 				acceleration.x = accel;
 			}
 			
-			angle = Math.atan2(FlxG.mouse.y - y, FlxG.mouse.x - x) / Math.PI * 180;
+			angle = Math.atan2(FlxG.mouse.y - centerY, FlxG.mouse.x - centerX) / Math.PI * 180;
 			
 			changeColor+= 5;
 			if (changeColor > 255)
@@ -143,6 +143,16 @@ package
 				y = Main.GAME_HEIGHT - height;
 				velocity.y = Math.min(velocity.y, 0);
 			}
+		}
+		
+		
+		public function get centerX():int
+		{
+			return x + width / 2;
+		}
+		public function get centerY():int
+		{
+			return y + height / 2;
 		}
 	}
 

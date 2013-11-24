@@ -44,7 +44,7 @@ package
 			}
 			this.exists = true;
 			this.alive = true;
-			var side:int = Math.random() * 4;
+			var side:int = Math.random() * 3;
 			if (side == 0) {
 				//left
 				this.x = -40;
@@ -55,15 +55,10 @@ package
 				this.x = Math.random() * Main.GAME_WIDTH;
 				this.y = -40;
 			}
-			else if (side == 2) {
+			else{
 				//right
 				this.x = Main.GAME_WIDTH + 20;
 				this.y = Math.random() * Main.GAME_HEIGHT;
-			}
-			else {
-				//bottom
-				this.x = Math.random() * Main.GAME_WIDTH;
-				this.y = Main.GAME_HEIGHT + 20;
 			}
 		}
 		
@@ -82,8 +77,8 @@ package
 				this.color = intVal;
 				coolDown--;
 				if (coolDown <= 0 && enemyType == TYPE_WIZARD) {
-					Registry.enemyBullets.addBullet(	x, 
-														y, 
+					Registry.enemyBullets.addBullet(	centerX, 
+														centerY, 
 														angle, 
 														Assets.G_FIREBALL);
 					coolDown = 30;
@@ -132,20 +127,20 @@ package
 		private function trackerMove():void
 		{
 			//Go TOWARDS the player
-			angle = Math.atan2(Registry.player.y - y, Registry.player.x - x) * 180 / Math.PI;
+			angle = Math.atan2(Registry.player.centerY - centerY, Registry.player.centerX - centerX) * 180 / Math.PI;
 			velocity.x = SPEED * Math.cos(angle * Math.PI / 180.0);
 			velocity.y = SPEED * Math.sin(angle * Math.PI / 180.0);
 		}
 		private function shooterMove():void
 		{
-			angle = Math.atan2(Registry.player.y - y, Registry.player.x - x) * 180 / Math.PI;
+			angle = Math.atan2(Registry.player.centerY - centerY, Registry.player.centerX - centerX) * 180 / Math.PI;
 			acceleration.x = SPEED * Math.cos(angle * Math.PI / 180.0);
 			acceleration.y = SPEED * Math.sin(angle * Math.PI / 180.0);
 		}
 		private function cowardMove():void
 		{
 			//Go AWAY from the player (face them, turn 180)
-			angle = Math.atan2(Registry.player.y - y, Registry.player.x - x) * 180 / Math.PI + 180;
+			angle = Math.atan2(Registry.player.centerY - centerY, Registry.player.centerX - centerX) * 180 / Math.PI + 180;
 			velocity.x = SPEED * Math.cos(angle * Math.PI / 180.0);
 			velocity.y = SPEED * Math.sin(angle * Math.PI / 180.0);
 		}
@@ -168,6 +163,16 @@ package
 			{
 				y = Main.GAME_HEIGHT - height;
 			}
+		}
+		
+		
+		public function get centerX():int
+		{
+			return x + width / 2;
+		}
+		public function get centerY():int
+		{
+			return y + height / 2;
 		}
 	}
 

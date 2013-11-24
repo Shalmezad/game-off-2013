@@ -9,6 +9,8 @@ package
 		private var scoreText:FlxText;
 		public var score:int = 0;
 		
+		public var slotBG:FlxSprite
+		
 		private var playerSlot:SlotReel;
 		private var enemySlot:SlotReel;
 		private var otherSlot:SlotReel;
@@ -21,11 +23,9 @@ package
 			scoreText = new FlxText(320 - 100, 5, 100, "Score: " + score);
 			add(scoreText);
 			
-			var slotBG:FlxSprite;
-			slotBG = new FlxSprite(Main.GAME_CENTER_X - 26, 210 - 2);
+			slotBG = new FlxSprite(Main.GAME_CENTER_X - 60, 210 - 12);
 			slotBG.loadGraphic(Assets.G_SLOT_BACKGROUND);
-			slotBG.scale = new FlxPoint(2, 2);
-			slotBG.x = Main.GAME_CENTER_X - 34;
+			slotBG.immovable = true;
 			add(slotBG);
 			
 			playerSlot = new SlotReel(Main.GAME_CENTER_X - 24, 210);

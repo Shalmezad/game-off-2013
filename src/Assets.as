@@ -55,7 +55,7 @@ package
 		[Embed(source = "../res/slots/greentile.png")]
 		public static const G_SLOT_TILE:Class;
 		
-		[Embed(source = "../res/slot-bg.png")]
+		[Embed(source = "../res/slot-bgx2.png")]
 		public static const G_SLOT_BACKGROUND:Class;
 		
 		//misc

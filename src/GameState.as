@@ -46,6 +46,10 @@ package
 			FlxG.collide(Registry.enemies, Registry.enemies);
 			FlxG.collide(Registry.player, Registry.enemies, enemyPlayerCollision);
 			FlxG.overlap(Registry.player, Registry.enemyBullets, bulletPlayerCollision);
+			
+			FlxG.collide(Registry.player, gui.slotBG);
+			FlxG.collide(Registry.enemies, gui.slotBG);
+			
 			changeTick++;
 			if (changeTick >= 1000) 
 			{
@@ -60,8 +64,8 @@ package
 				coolDown <= 0) 
 			{
 				coolDown = 20;
-				bullets.addBullet(	Registry.player.x, 
-									Registry.player.y, 
+				bullets.addBullet(	Registry.player.centerX, 
+									Registry.player.centerY, 
 									Registry.player.angle, 
 									Assets.G_BLUE_FIREBALL);
 			}
