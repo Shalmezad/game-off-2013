@@ -3,7 +3,7 @@ package
 	import org.flixel.*;
 	public class InstructionState extends FlxState
 	{
-		private const NUM_PAGES:int = 5;
+		private const NUM_PAGES:int = 6;
 		private var pageNum:int;
 		public function InstructionState(pageNum:int = 1) 
 		{
@@ -24,6 +24,9 @@ package
 					break;
 				case 5:
 					loadPage5();
+					break;
+				case 6:
+					loadPage6();
 					break;
 			}
 			
@@ -75,11 +78,11 @@ package
 		{
 			add(new FlxText(20, 20, Main.GAME_WIDTH - 40, "The Machine:"));
 			add(new FlxSprite(60, 40, Assets.G_SLOT_BACKGROUND));
-			add(new FlxText(20, 70, Main.GAME_WIDTH - 40, "The machine consists of 3 parts:"));
-			add(new FlxText(20, 80, Main.GAME_WIDTH - 40, " -Your slot"));
-			add(new FlxText(20, 90, Main.GAME_WIDTH - 40, " -Enemy slot"));
-			add(new FlxText(20, 100, Main.GAME_WIDTH - 40, " -Random slot"));
-			add(new FlxText(20, 110, Main.GAME_WIDTH - 40, "Every so often, the slot will spin, and change the game. For better, or worse."));
+			add(new FlxText(20, 90, Main.GAME_WIDTH - 40, "The machine consists of 3 parts:"));
+			add(new FlxText(20, 100, Main.GAME_WIDTH - 40, " -Your slot"));
+			add(new FlxText(20, 110, Main.GAME_WIDTH - 40, " -Enemy slot"));
+			add(new FlxText(20, 120, Main.GAME_WIDTH - 40, " -Random slot"));
+			add(new FlxText(20, 130, Main.GAME_WIDTH - 40, "Every so often, the slot will spin, and change the game. For better, or worse."));
 		}
 		public function loadPage3():void
 		{
@@ -112,6 +115,17 @@ package
 		
 			add(new FlxText(20, 100, Main.GAME_WIDTH - 40, "Strategy:"));
 			add(new FlxText(30, 110, Main.GAME_WIDTH - 40, "Keep your distance, and flame on."));
+		}
+		
+		public function loadPage6():void
+		{
+			add(new FlxText(20, 20, Main.GAME_WIDTH - 40, "Golem:"));
+			add(new FlxSprite(60, 40, Assets.G_GOLEM));
+			add(new FlxSprite(80, 40, Assets.G_SAND_GOLEM));
+			add(new FlxText(20, 60, Main.GAME_WIDTH - 40, "A being of sand or stone. Cannot be killed by conventional means."));
+		
+			add(new FlxText(20, 100, Main.GAME_WIDTH - 40, "Strategy:"));
+			add(new FlxText(30, 110, Main.GAME_WIDTH - 40, "Golems are unstoppable. Go get 'em!"));
 		}
 	}
 
