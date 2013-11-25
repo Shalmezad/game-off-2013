@@ -8,6 +8,7 @@ package
 		public static const TYPE_WIZARD:int = 1;
 		public static const TYPE_GOBLIN:int = 2;
 		public static const TYPE_SHEEP:int = 3;
+		public static const TYPE_GOLEM:int = 4;
 		
 		public var enemyType:int;
 		private var moveFunction:Function;
@@ -90,7 +91,7 @@ package
 		public function change():void
 		{
 			changeColor = 0;
-			var changeShape:int = Math.random() * 3;
+			var changeShape:int = Math.random() * 4;
 			if (changeShape == 0)
 			{
 				toSheep();
@@ -99,9 +100,13 @@ package
 			{
 				toWizard();
 			}
-			else 
+			else if (changeShape == 2)
 			{
 				toGoblin();
+			}
+			else 
+			{
+				toGolem();
 			}
 		}
 		
@@ -122,6 +127,13 @@ package
 			loadGraphic(Assets.G_DARK_WIZARD);
 			moveFunction = shooterMove;
 			enemyType = TYPE_WIZARD;
+		}
+		
+		public function toGolem():void
+		{
+			loadGraphic(Assets.G_SAND_GOLEM);
+			moveFunction = trackerMove;
+			enemyType = TYPE_GOLEM;
 		}
 		
 		private function trackerMove():void

@@ -97,30 +97,43 @@ package
 			{
 				enemy = b as Enemy;
 			}
-			Registry.player.hurt(1);
-			if (Registry.player.playerType == Player.TYPE_GOBLIN) {
-				gui.addScore(enemy.enemyType);
-				enemy.kill();
-				Registry.player.health += 1;
+			if (Registry.player.playerType != Player.TYPE_GOLEM && 
+				Registry.player.playerType != Player.TYPE_GOBLIN)
+			{
+				Registry.player.hurt(1);
+			}
+			if (Registry.player.playerType == Player.TYPE_GOBLIN || 
+				Registry.player.playerType == Player.TYPE_GOLEM) 
+			{
+				if (enemy.enemyType != Enemy.TYPE_GOLEM)
+				{
+					gui.addScore(enemy.enemyType);
+					enemy.kill();
+				}
 			}
 		}
 		
 		private function enemyBulletCollision(a:FlxObject, b:FlxObject) :void
 		{
 			var enemy:Enemy;
+			var bullet:Bullet;
 			if (a is Enemy)
 			{
 				enemy = a as Enemy;
+				bullet = b as Bullet;
 			}
 			else
 			{
 				enemy = b as Enemy;
+				bullet = a as Bullet;
 			}
-			gui.addScore(enemy.enemyType);
-			add(new Explosion(enemy.x, enemy.y, 0xFFAA0000));
-			a.kill();
-			b.kill();
-			
+			if (enemy.enemyType != Enemy.TYPE_GOLEM)
+			{
+				enemy.kill();
+				gui.addScore(enemy.enemyType);
+				add(new Explosion(enemy.x, enemy.y, 0xFFAA0000));
+			}
+			bullet.kill();
 		}
 		
 		private function bulletPlayerCollision(a:FlxObject, b:FlxObject):void
@@ -135,7 +148,10 @@ package
 				bullet = b as Bullet;
 			}
 			bullet.kill();
-			Registry.player.hurt(5);
+			if (Registry.player.playerType != Player.TYPE_GOLEM)
+			{
+				Registry.player.hurt(5);
+			}
 		}
 		
 	}

@@ -14,6 +14,8 @@ package
 		public static const G_BLACK_SHEEP:Class;	//Every family has one. This game has many
 		[Embed(source = "../res/hobgoblin.png")]
 		public static const G_HOBGOBLIN:Class;
+		[Embed(source = "../res/sand-golem.png")]
+		public static const G_SAND_GOLEM:Class;
 		
 		//Player
 		[Embed(source = "../res/wizard.png")] 			
@@ -22,6 +24,8 @@ package
 		public static const G_SHEEP:Class;
 		[Embed(source = "../res/goblin.png")]
 		public static const G_GOBLIN:Class;
+		[Embed(source = "../res/golem.png")]
+		public static const G_GOLEM:Class;
 		
 		//Projectiles
 		[Embed(source = "../res/fireball.png")] 			
@@ -42,12 +46,16 @@ package
 		public static const G_SLOT_SHEEP:Class;
 		[Embed(source = "../res/slots/wizard.png")]
 		public static const G_SLOT_WIZARD:Class;
+		[Embed(source = "../res/slots/golem.png")]
+		public static const G_SLOT_GOLEM:Class;
 		[Embed(source = "../res/slots/hobgoblin.png")]
 		public static const G_SLOT_HOBGOBLIN:Class;	//why just be a slot goblin?
 		[Embed(source = "../res/slots/black-sheep.png")]
 		public static const G_SLOT_BLACK_SHEEP:Class;
 		[Embed(source = "../res/slots/dark-wizard.png")]
 		public static const G_SLOT_DARK_WIZARD:Class;
+		[Embed(source = "../res/slots/sand-golem.png")]
+		public static const G_SLOT_SAND_GOLEM:Class;
 		[Embed(source = "../res/slots/ice.png")]
 		public static const G_SLOT_ICE:Class;
 		[Embed(source = "../res/slots/sand.png")]

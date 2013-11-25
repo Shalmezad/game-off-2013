@@ -18,6 +18,10 @@ package
 		private const GOBLIN_MAX_VEL:int = 160;
 		public static const TYPE_GOBLIN:int = 3;
 		
+		private const GOLEM_ACCEL:int = 100;
+		private const GOLEM_MAX_VEL:int = 160;
+		public static const TYPE_GOLEM:int = 4;
+		
 		private const MAX_HEALTH:int = 100;
 		
 		private var accel:int;
@@ -39,7 +43,7 @@ package
 		public function change():void
 		{
 			changeColor = 0;
-			var changeShape:int = Math.random() * 3;
+			var changeShape:int = Math.random() * 4;
 			if (changeShape == 0) 
 			{
 				toSheep();
@@ -48,9 +52,13 @@ package
 			{
 				toWizard();
 			}
-			else
+			else if(changeShape == 2)
 			{
 				toGoblin();
+			}
+			else
+			{
+				toGolem();
 			}
 		}
 		
@@ -78,6 +86,15 @@ package
 			maxVelocity.x = GOBLIN_MAX_VEL;
 			maxVelocity.y = GOBLIN_MAX_VEL;
 			playerType = TYPE_GOBLIN;
+		}
+		
+		public function toGolem():void
+		{
+			loadGraphic(Assets.G_GOLEM);
+			accel = GOLEM_ACCEL;
+			maxVelocity.x = GOLEM_MAX_VEL;
+			maxVelocity.y = GOLEM_MAX_VEL;
+			playerType = TYPE_GOLEM;
 		}
 		
 		override public function update():void

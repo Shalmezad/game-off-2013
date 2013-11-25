@@ -96,6 +96,10 @@ package
 					//wizard
 					Registry.player.toWizard();
 					break;
+				case 4:
+					//golem
+					Registry.player.toGolem();
+					break;
 			}
 		}
 		
@@ -118,6 +122,10 @@ package
 				case 3:
 					//wizard
 					Registry.enemies.toWizard();
+					break;
+				case 4:
+					//golem
+					Registry.enemies.toGolem();
 					break;
 			}
 		}
@@ -154,7 +162,7 @@ package
 		
 		private function slotSpinPlayer():void
 		{
-			var reelType:int = Math.random() * 4;
+			var reelType:int = Math.random() * 5;
 			switch(reelType)
 			{
 				case 0:
@@ -173,13 +181,17 @@ package
 					slot.loadGraphic(Assets.G_SLOT_WIZARD);
 					currentSlot = 3;
 					break;
+				case 4:
+					slot.loadGraphic(Assets.G_SLOT_GOLEM);
+					currentSlot = 4;
+					break;
 			}
 		}
 		
 		
 		private function slotSpinEnemy():void
 		{
-			var reelType:int = Math.random() * 4;
+			var reelType:int = Math.random() * 5;
 			switch(reelType)
 			{
 				case 0:
@@ -197,6 +209,10 @@ package
 				case 3:
 					slot.loadGraphic(Assets.G_SLOT_DARK_WIZARD);
 					currentSlot = 3;
+					break;
+				case 4:
+					slot.loadGraphic(Assets.G_SLOT_SAND_GOLEM);
+					currentSlot = 4;
 					break;
 			}
 		}

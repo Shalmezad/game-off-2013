@@ -58,6 +58,16 @@ package
 			}
 		}
 		
+		
+		public function toGolem():void
+		{
+			enemyType = Enemy.TYPE_GOLEM;
+			for each(var enemy:Enemy in members)
+			{
+				enemy.toGolem();
+			}
+		}
+		
 		public function toGoblin():void
 		{
 			enemyType = Enemy.TYPE_GOBLIN;
