@@ -1,0 +1,1 @@
+The .it file is for OpenMPT for those who would like to see how it was made.

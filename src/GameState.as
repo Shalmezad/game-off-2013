@@ -32,6 +32,8 @@ package
 			
 			gui = new GUI();
 			add(gui);
+			
+			FlxG.playMusic(Assets.BG_MUSIC);
 		}
 		
 		

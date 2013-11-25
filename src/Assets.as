@@ -70,6 +70,9 @@ package
 		[Embed(source = "../res/disco_fg.png")] 			
 		public static const G_DISCO:Class;
 		
+		[Embed(source = "../res/music/RunningBass.mp3")] 
+		public static const BG_MUSIC:Class;
+		
 	}
 
 }
