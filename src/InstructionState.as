@@ -49,6 +49,12 @@ package
 				nextButton = new FlxButton(Main.GAME_WIDTH - 90, Main.GAME_HEIGHT - 40, "Next", nextPage);
 				add(nextButton);
 			}
+			else
+			{
+				var mainButton:FlxButton;
+				mainButton = new FlxButton(Main.GAME_WIDTH - 90, Main.GAME_HEIGHT - 40, "Main", toMain);
+				add(mainButton);
+			}
 		}
 		
 		public function toMain():void
