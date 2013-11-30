@@ -100,7 +100,8 @@ package
 				enemy = b as Enemy;
 			}
 			if (Registry.player.playerType != Player.TYPE_GOLEM && 
-				Registry.player.playerType != Player.TYPE_GOBLIN)
+				Registry.player.playerType != Player.TYPE_GOBLIN &&
+				enemy.enemyType != Enemy.TYPE_SHEEP)
 			{
 				Registry.player.hurt(1);
 			}

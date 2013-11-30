@@ -106,7 +106,7 @@ package
 			add(new FlxText(20, 20, Main.GAME_WIDTH - 40, "Goblin:"));
 			add(new FlxSprite(60, 40, Assets.G_GOBLIN));
 			add(new FlxSprite(80, 40, Assets.G_HOBGOBLIN));
-			add(new FlxText(20, 60, Main.GAME_WIDTH - 40, "Goblins are very good melee fighters. All they have to do is touch the enemy, and their dead. Avoid contact at all costs."));
+			add(new FlxText(20, 60, Main.GAME_WIDTH - 40, "Goblins are very good melee fighters. All they have to do is touch the enemy, and they're dead. Avoid contact at all costs."));
 		
 			add(new FlxText(20, 100, Main.GAME_WIDTH - 40, "Strategy:"));
 			add(new FlxText(30, 110, Main.GAME_WIDTH - 40, "Run into the enemies, make them mincemeat!"));
